@@ -1,0 +1,2 @@
+# swiftPractice
+Basic Swift Syntax
