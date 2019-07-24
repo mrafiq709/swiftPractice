@@ -68,13 +68,117 @@ repeat {
  */
 var N = 4
 for i in 0..<N {
-    print(i, terminator:" ")
+    //print(i, terminator:" ")
     
     if i == N-1 {
-        print(terminator:"\n")
+        //print(terminator:"\n")
     }
 }
 
 for i in 0...N {
-    print(i, terminator:" ")
+    //print(i, terminator:" ")
 }
+
+/**
+ * Functions:
+ * "-> String" return type
+ * "_" used for no lebel when calling function
+ * "on:" custom label
+ */
+
+func greet(person: String, day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+
+
+func greetNoRetun(person: String, day: String) {
+    //print("Hello \(person), today is \(day).")
+}
+
+func greetCustomArgument(_ person: String, on day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+
+var result: String
+
+result = greet(person: "Bob", day: "Tuesday")
+//print(result)
+
+greetNoRetun(person: "Rafiq", day: "Sunday")
+
+result = greetCustomArgument("John", on: "Wednesday")
+//print(result)
+
+/**
+ * return multiple value from a function
+ */
+func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
+    var min = scores[0]
+    var max = scores[0]
+    var sum = 0
+    
+    for score in scores {
+        if score > max {
+            max = score
+        } else if score < min {
+            min = score
+        }
+        sum += score
+    }
+    
+    return (min, max, sum)
+}
+
+let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
+
+// Can call by either label name or label number
+//print(statistics.sum)
+//print(statistics.2)
+//print(statistics.max)
+//print(statistics.1)
+
+/**
+ * Nested Function
+ */
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+
+let num =  returnFifteen()
+//print(num)
+
+/**
+ * Function return another function
+ */
+func makeIncrementer() -> ((Int) -> Int) {
+    func addOne(number: Int) -> Int {
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+let res = increment(7)
+//print(res)
+
+/**
+ * A function can take another function as one of its arguments.
+ */
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+var numbers = [20, 19, 7, 12]
+var b = hasAnyMatches(list: numbers, condition: lessThanTen)
+//print(b)
