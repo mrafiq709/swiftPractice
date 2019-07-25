@@ -186,7 +186,7 @@ var b = hasAnyMatches(list: numbers, condition: lessThanTen)
 /**
  * We can write any code like bellow in the second brakets {}
  * map array values
- * TAG -> map, array mapping, multiplying all array value, sort array
+ * TAG -> map, array mapping, array iteration map, sort array
  */
 let temp = numbers.map({ (number: Int) -> Int in
     if number % 2 == 0{
