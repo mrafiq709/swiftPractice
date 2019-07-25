@@ -117,13 +117,14 @@ triangle.perimeter = 9.9
 // print(triangle.sideLength)
 
 /**
- * willSet -> run before setting a newValue
- * didSet -> run after setting a newValue
+ * Get the old value after seeting getter and setter
+ * willSet -> newValue
+ * didSet -> oldValue
  */
 class TriangleAndSquare {
     var triangle: EquilateralTriangle {
-        willSet {
-            square.sideLength = newValue.sideLength
+        didSet {
+            square.sideLength = oldValue.sideLength
         }
     }
     var square: Square {
@@ -137,7 +138,16 @@ class TriangleAndSquare {
     }
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
-print(triangleAndSquare.square.sideLength)
-print(triangleAndSquare.triangle.sideLength)
+//print(triangleAndSquare.square.sideLength)
+//print(triangleAndSquare.triangle.sideLength)
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
-print(triangleAndSquare.triangle.sideLength)
+//print(triangleAndSquare.triangle.sideLength)
+
+/**
+ * if the value before the ? is nil, everything after the ? is ignored
+ * and the value of the whole expression is nil
+ */
+let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
+let sideLength = optionalSquare?.hello()
+
+
