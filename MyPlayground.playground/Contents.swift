@@ -182,3 +182,37 @@ func lessThanTen(number: Int) -> Bool {
 var numbers = [20, 19, 7, 12]
 var b = hasAnyMatches(list: numbers, condition: lessThanTen)
 //print(b)
+
+/**
+ * We can write any code like bellow in the second brakets {}
+ * map array values
+ * TAG -> map, array mapping, multiplying all array value, sort array
+ */
+let temp = numbers.map({ (number: Int) -> Int in
+    if number % 2 == 0{
+        return number
+    }
+    return 0
+})
+print(temp)
+
+print(numbers.map({ (number: Int) -> Int in
+    let result = 3 * number
+    return result
+}))
+
+var newNumber = ["10", "20"]
+var str: String = ""
+print(newNumber.map({(number: String) -> String in
+    str += number
+    return str
+}))
+
+// We can also omit the type
+let mappedNumbers = numbers.map({ number in 3 * number })
+print(mappedNumbers)
+
+// We can also pass number and can omit the paramiter name
+// array sorting
+let sortedNumbers = numbers.sorted { $0 < $1 }
+print(sortedNumbers)
